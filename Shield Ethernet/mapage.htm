@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>AJAX ARDUINO</title>
+ <script>
+  function GetSwitchState() {
+  nocache = "&nocache="+ Math.random() * 1000000;
+  //-- Défibition d'un objet XHR
+  var request = new XMLHttpRequest();
+  //-- Fonction de callback pour gérer la réponse du serveur
+  request.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        if (this.responseText != null) {
+            document.getElementById("switch_txt").innerHTML = this.responseText;}}}}
+  //-- Définition d'un GET à envoyer au serveur Arduino			
+  request.open("GET", "ajax_switch" + nocache, true); //-- nocache pour compatibilité IE
+  //-- Envoi du GET au serveur Arduino
+  request.send(null);
+  }
+ </script>
+</head>
+<body>
+ <h1>Arduino AJAX Test</h1>
+ <p id="switch_txt">Etat du switch 3 : inconnu...</p>
+ <button type="button" onclick="GetSwitchState()">SWITCH 3</button>
+</body>
+</html>

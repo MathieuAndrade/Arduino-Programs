@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> <!-- Encodage de la page  --> 
+		
+		<script type="text/javascript" src="zepto.min.js"></script>
+		<script type="text/javascript">
+			function refresh() {
+				$('#content').load('/arduino/valeur');
+			}
+		</script>
+	</head>
+	<body onload="setInterval(refresh, 1000);">
+		<h1>Valeur du potentiomètre:</h1>
+		<span id="content">Waiting for Arduino...</span>
+	</body>
+</html>
